@@ -1,0 +1,277 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100%;
+    overflow: hidden;
+}
+.paint-app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+.title-bar {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.title-bar-text {
+    font-size: 12px;
+}
+.window-controls {
+    display: flex;
+}
+.window-control {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+.menu-bar {
+    background-color: #f0f0f0;
+    padding: 4px 8px;
+}
+.menu-item {
+    display: inline-block;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+.menu-item:hover {
+    background-color: #e0e0e0;
+}
+.toolbar {
+    background-color: #ffffff;
+    padding: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.tool-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 1px solid #e0e0e0;
+    padding-right: 8px;
+}
+.tool-group:last-child {
+    border-right: none;
+}
+.tool-buttons {
+    display: flex;
+    gap: 4px;
+}
+.tool-button {
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    border: 1px solid #d0d0d0;
+    cursor: pointer;
+}
+.tool-button:hover {
+    background-color: #f0f0f0;
+}
+.tool-label {
+    font-size: 10px;
+    margin-top: 4px;
+}
+.color-palette {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 2px;
+}
+.color-swatch {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #d0d0d0;
+    cursor: pointer;
+}
+.canvas-area {
+    flex: 1;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    overflow: auto;
+}
+.canvas {
+    background-color: #ffffff;
+    border: 1px solid #d0d0d0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.status-bar {
+    background-color: #f0f0f0;
+    padding:0px 8px; /* Giảm padding từ 4px xuống 2px */
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    border-top: 1px solid #d0d0d0;
+}
+
+/* Thêm định dạng cho ô "File" khi được chọn */
+.menu-item-file {
+    background-color: #0078d4; /* Nền màu xanh */
+    color: white; /* Chữ màu trắng */
+    padding: 4px 8px;
+    border: 1px solid #0078d4; /* Viền xanh */
+    border-bottom: none; /* Giữ viền trên, trái và phải, không có viền dưới */
+    cursor: pointer;
+}
+
+.menu-item-file.selected {
+    background-color: #005a9e; /* Màu sẫm hơn khi được chọn */
+    border: 1px solid #005a9e;
+    border-bottom: none; /* Không có viền dưới */
+}
+
+/* Định dạng cho ô "Home" và "View" khi chưa được chọn */
+.menu-item-home{
+    background-color: #f0f0f0; /* Cùng màu với menu bar */
+    color: black; /* Chữ màu đen */
+    padding: 4px 8px;
+    border-right: 10px;
+    cursor: pointer;
+    border: 0.1px solid black ;
+}
+
+.menu-item-view {
+    background-color: #f0f0f0; /* Cùng màu với menu bar */
+    color: black; /* Chữ màu đen */
+    padding: 4px 8px;
+    cursor: pointer;
+    border: none; /* Không có viền khi chưa chọn */
+}
+
+/* Hover để thêm hiệu ứng khi di chuột vào các mục */
+.menu-item:hover {
+    background-color: #e0e0e0; /* Màu xám nhạt khi di chuột */
+}
+.canvas-controls {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.canvas-controls label {
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+#canvas-scale {
+    width: 200px;
+}
+.status-bar {
+    background-color: #f0f0f0;
+    padding: 4px 8px;
+    display: flex;
+    justify-content: center; /* Căn giữa toàn bộ nội dung */
+    border-top: 1px solid #d0d0d0;
+}
+
+.status-bar-content {
+    display: flex;
+    justify-content: space-between; /* Căn đều hai đầu (size và slider) */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    width: 100%; /* Đảm bảo nội dung chiếm hết chiều ngang */
+}
+
+.status-bar-size {
+    flex-grow: 1; /* Căn giữa size so với thanh slider */
+    text-align: center; /* Căn giữa chính văn bản */
+}
+
+.canvas-controls {
+    display: flex;
+    align-items: center;
+}
+
+.canvas-controls button {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    background-color: #f0f0f0;
+    border: 2px solid #0e0d0d;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.canvas-controls button:hover {
+    background-color: #e0e0e0;
+}
+
+.canvas-controls label {
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+#canvas-scale {
+    width: 200px;
+    margin: 0 10px; /* Tạo khoảng cách giữa nút cộng và trừ */
+}
+
+#canvas-scale-value {
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+
+.tool-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Cột bên trái 1fr cho Paste, cột bên phải 1fr cho Cut và Copy */
+    grid-template-rows: 1fr 1fr; /* 2 hàng: hàng đầu cho Cut, hàng thứ 2 cho Copy */
+    gap: 4px;
+    width: 100%;
+}
+
+.tool-button.paste {
+    grid-column: 1 / 2; /* Chiếm toàn bộ cột trái */
+    grid-row: 1 / 3;    /* Chiếm cả 2 hàng (toàn bộ chiều cao của cột trái) */
+    background-color: #f0f0f0;
+    border: 1px solid #d0d0d0;
+    text-align: center;
+    padding: 8px;
+    width: 100%;
+}
+
+.tool-button.cut {
+    grid-column: 2 / 3; /* Nằm ở cột phải */
+    grid-row: 1 / 2;    /* Nằm ở hàng đầu tiên bên phải */
+    background-color: #f0f0f0;
+    border: 1px solid #d0d0d0;
+    text-align: center;
+    padding: 8px;
+    width: 100%;
+}
+
+.tool-button.copy {
+    grid-column: 2 / 3; /* Nằm ở cột phải */
+    grid-row: 2 / 3;    /* Nằm ở hàng thứ hai bên phải */
+    background-color: #f0f0f0;
+    border: 1px solid #d0d0d0;
+    text-align: center;
+    padding: 8px;
+    width: 100%;
+}
+
+.tool-label {
+    display: block;
+    text-align: center;
+    margin-top: 4px;
+    font-size: 10px;
+}
+
+
+
