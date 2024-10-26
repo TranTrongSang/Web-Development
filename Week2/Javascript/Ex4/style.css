@@ -1,0 +1,30 @@
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  input[type="number"], button {
+    padding: 10px;
+    font-size: 16px;
+    margin: 10px 0;
+    width: calc(100% - 20px); /* Để đảm bảo căn chỉnh */
+  }
+  
+  .result {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
