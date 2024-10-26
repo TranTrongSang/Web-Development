@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library System Simulation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Library System</h1>
+    <div id="library">
+        <h2>Available Books</h2>
+        <ul id="book-list"></ul>
+
+        <h2>Add Book</h2>
+        <input type="text" id="book-title" placeholder="Title" required>
+        <input type="text" id="book-author" placeholder="Author" required>
+        <input type="text" id="book-isbn" placeholder="ISBN" required>
+        <input type="number" id="book-copies" placeholder="Copies" min="1" required>
+        <button id="add-book">Add Book</button>
+
+        <h2>Users</h2>
+        <input type="text" id="user-name" placeholder="User Name" required>
+        <select id="user-type">
+            <option value="Student">Student</option>
+            <option value="Teacher">Teacher</option>
+        </select>
+        <button id="add-user">Add User</button>
+
+        <h2>Borrow/Return Book</h2>
+        <select id="users-select"></select>
+        <select id="books-select"></select>
+        <button id="borrow-book">Borrow Book</button>
+        <button id="return-book">Return Book</button>
+
+        <div id="message"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
