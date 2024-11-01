@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Information</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    #user-list { padding: 10px; background-color: #f0f0f0; border-radius: 8px; }
+    .user-item { margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <h1>User Information</h1>
+  <input type="text" id="searchBox" placeholder="Search by name..." oninput="filterUsers()" />
+  <div id="user-list">
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
