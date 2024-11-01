@@ -16,31 +16,54 @@ class DatabaseService
 
 class MySQLDatabaseService extends DatabaseService
 {
-    connect()
+    connectMySQL()
     {
-        return "Connected to MySQL Server!";
+        console.log("Connected to MySQL Database!");
     }   
-    getUserData()
+    getUserDataMySQL(userID)
     {
-        return "Fetched user data from  MySQL DB!";
+        console.log(`Fetched user data for User ID ${userID} from  MySQL DB!`);
+        return {id: userID, name: "Alice (MySQL)"}; 
     }
 }
 
 class SQLServerDatabaseService extends DatabaseService
 {
-    connect()
+    connectSQLServer()
     {
-        return "Connected to SQL Server!";
+        console.log("Connected to SQL Server Database!");
     }   
-    getUserData()
+    getUserDataSQLServer(userID)
     {
-        return "Fetched user data from SQL Server DB!";
+        console.log(`Fetched user data for User ID ${userID} from SQL Server DB!`);
+        return {id: userID, name: "Bob (SQL Server)"}; 
+    }
+    closeSQLServerConnection()
+    {
+        console.log("Closed SQL Server Database Connection!");
+    }
+}
+
+class PostgreSQLDatabaseService extends DatabaseService
+{
+    connectSQLServer()
+    {
+        console.log("Connected to PostgreSQL Database!");
+    }   
+    getUserDataPostgreSQL(userID)
+    {
+        console.log(`Fetched user data for User ID ${userID} from PostgreSQL Server DB!`);
+        return {id: userID, name: "Charlie (PostgreSQL)"}; 
+    }
+    rollbackTransaction()
+    {
+        console.log("Rolled back PostgreSQL Transaction");
     }
 }
 
 //Step 3: Inject Dependency into UserService 
 //The UserService will accept any implementation of DatabaseService, making it database-agnostic. 
-class UserService 
+class UserService
 {
     constructor(databaseService)
     {
@@ -56,22 +79,42 @@ class UserService
     }
 }
 
+class UserManager
+{
+    constructor(databaseService)
+    {
+        this.databaseService = databaseService;
+    }
+    getUser(userID)
+    {
+        
+        this.databaseService.connect();
+        const user = this.databaseService.getUserDataMySQL(userID);
+        console.log(`User Details: `, user);
+        return user;
+    }
+
+}
+
+const userManager = new UserManager();
+userManager.getUser(1);
+
 //Step 4: Usage with Dependency Injection 
 /*
 Now, we can easily switch between MySQLDatabaseService and 
 SQLServerDatabaseService when creating UserService. 
 */ 
 
-const mySQLDatabaseService = new DatabaseService();
-const userServiceMySQL = new UserService(mySQLDatabaseService);
+// const mySQLDatabaseService = new DatabaseService();
+// const userServiceMySQL = new UserService(mySQLDatabaseService);
 
-console.log(userServiceMySQL.connectToDatabase);
-console.log(userServiceMySQL.fetchUserData);
+// console.log(userServiceMySQL.connectToDatabase);
+// console.log(userServiceMySQL.fetchUserData);
 
-const sqlServerDatabaseService = new SQLServerDatabaseService();
-const userServiceSQLServer = new UserService(sqlServerDatabaseService);
+// const sqlServerDatabaseService = new SQLServerDatabaseService();
+// const userServiceSQLServer = new UserService(sqlServerDatabaseService);
 
-console.log(userServiceSQLServer.connectToDatabase);
-console.log(userServiceSQLServer.fetchUserData);
+// console.log(userServiceSQLServer.connectToDatabase);
+// console.log(userServiceSQLServer.fetchUserData);
 
 
