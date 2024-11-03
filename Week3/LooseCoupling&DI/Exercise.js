@@ -1,4 +1,4 @@
-// Step 1: Define the Interface
+// Define the Interface
 class DatabaseService {
     connect() {
         throw new Error("Method 'connect()' must be implemented");
@@ -8,7 +8,7 @@ class DatabaseService {
     }
 }
 
-// Step 2: Create Concrete Implementations for MySQL, SQL Server, and PostgreSQL
+// Create Concrete Implementations for MySQL, SQL Server, and PostgreSQL
 class MySQLDatabaseService extends DatabaseService {
     connectMySQL() {
         console.log("Connected to MySQL Database!");
@@ -45,7 +45,7 @@ class PostgreSQLDatabaseService extends DatabaseService {
     }
 }
 
-// Step 3: Create the UserManager Class with Separate Methods
+// Create the UserManager Class with Separate Methods
 class UserManager {
     constructor(databaseService) {
         this.databaseService = databaseService;
@@ -105,17 +105,17 @@ class UserManager {
     }
 }
 
-// Usage Examples
+// Examples
 const mySQLDatabaseService = new MySQLDatabaseService();
 const userManagerMySQL = new UserManager(mySQLDatabaseService);
-const userMySQL = userManagerMySQL.getUserMySQL(1); // Fetch user data from MySQL
+const userMySQL = userManagerMySQL.getUserMySQL(1); 
 
 const sqlServerDatabaseService = new SQLServerDatabaseService();
 const userManagerSQLServer = new UserManager(sqlServerDatabaseService);
-const userSQLServer = userManagerSQLServer.getUserSQLServer(2); // Fetch user data from SQL Server
-const closeSQLServerConnection = userManagerSQLServer.closeSQLServerConnection(); // Close SQL Server connection
+const userSQLServer = userManagerSQLServer.getUserSQLServer(2); 
+const closeSQLServerConnection = userManagerSQLServer.closeSQLServerConnection(); 
 
 const postgreSQLDatabaseService = new PostgreSQLDatabaseService();
 const userManagerPostgreSQL = new UserManager(postgreSQLDatabaseService);
-const userPostgreSQL = userManagerPostgreSQL.getUserPostgreSQL(3); // Fetch user data from PostgreSQL
-const rollbackPostgreSQLTransaction = userManagerPostgreSQL.rollbackPostgreSQLTransaction(); // Rollback PostgreSQL transaction
+const userPostgreSQL = userManagerPostgreSQL.getUserPostgreSQL(3); 
+const rollbackPostgreSQLTransaction = userManagerPostgreSQL.rollbackPostgreSQLTransaction();
